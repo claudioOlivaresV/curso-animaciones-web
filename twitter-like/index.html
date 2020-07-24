@@ -1,0 +1,68 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animaciones de entrada y salida</title>
+  <style>
+    body {
+      display: flex;
+      /*height: 100vh;*/
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      /* font-family: Arial; */
+      flex-direction: column;
+
+    }
+    .like{
+        cursor: pointer;
+        width: 100px;
+        height: 100px;
+        /* background-color: red; */
+        background-image: url('corazon.png');
+
+
+    }
+    .like.is-like{
+
+        animation-name: like;
+        animation-duration: .8s;
+      
+        /* pasos */
+        animation-timing-function: steps(28);
+        /* background-position: right ; */
+        animation-fill-mode: forwards;
+    }
+    @keyframes like {
+        0%{
+            background-position: 0 0;
+
+        }
+        100%{
+            /* background-position: -2800px 0; */
+            background-position: right ;
+
+        }
+        
+    }
+  
+  </style>
+</head>
+<body>
+    <div class="tweet-box">
+        <div class="like" id='like'></div>
+    </div>
+
+
+
+</body>
+<script>
+    const like = document.getElementById('like');
+    like.addEventListener('click', (event)=>{
+        console.log(event);
+    like.classList.add('is-like')    
+
+    });
+  
+</script>
+</html>

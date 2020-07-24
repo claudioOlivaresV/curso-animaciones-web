@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Animaciones de entrada y salida</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
+   <style>
+    body {
+        background: url('platzi.png');
+        background-size: 100%;
+        margin: 0;
+
+    }
+    .container{
+        height: 500px;
+        background: #0f9bf6;
+       
+    }
+    .waves{
+        position: absolute;
+        /* left: 0;
+        right: 0;
+        height: 200px;
+        bottom: 0; */
+        bottom: -135px;
+        height: 527px;
+        width: 100%;
+        overflow: hidden;
+    }
+    .circulo{
+        /* width: 100%;
+        height: 200px; */
+        /* border-radius: 50%; */
+        width: 2402px;
+        height: 427px;
+        background: url('waves.png')  center bottom no-repeat;
+        /* background-color: rgba(0,0, 0, .3); */
+        position: absolute;
+        animation: 5s wave ease-in-out infinite alternate;
+        left: -180px;
+
+        
+    }
+    .circulo.a{
+        background-position: 0 -854px;
+
+    }
+    .circulo.b{
+        background-position: 0 -427px;
+
+        animation-delay: 6s;
+    }
+    .circulo.c{
+        background-position: 0 0;
+        animation-delay: 1.2s;
+    }
+    .container{
+        /* position: absolute; */
+        height: 500px;
+        background: #0f9bf6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     
+        /* para que no se salga de width: ; */
+        position: relative;
+
+    }
+    .container{
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        text-align: center;
+        font-size: 2em;
+    }
+    @keyframes wave {
+        0%{
+            transform: translate(0,0);
+
+        }
+        50%{
+            transform: translate(-80px, 30px);
+        }
+        100%{
+            transform: translate(160px, -60px);
+
+        }
+        
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Hola mundo</h1>
+            <p>Estoy en curso de animaciones para la web</p>
+        </div>
+        <div class="waves">
+            <div class="circulo a"></div>
+            <div class="circulo b"></div>
+            <div class="circulo c"></div>
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+
+
+</script>
+</html>

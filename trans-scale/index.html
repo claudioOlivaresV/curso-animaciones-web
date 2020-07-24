@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Transfomacion rotación</title>
+        <style>
+            body{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+    
+                
+            
+            }
+            .container{
+                border: 1px solid red;
+            }
+            .cuadrado:hover{
+                /* transform: scale(x, y) = scale(1); 
+                scale(se mide de 0 -1 = 0% a 100%) */
+                transform: scale(.5);
+                transform: scale(2, .5);
+                
+
+           
+
+
+            }
+            .cuadrado{
+                width: 200px;
+                height: 200px;
+                background-color: #7dc900;
+                margin: 20px;
+                transition: .3s;
+
+            }
+        
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="cuadrado">
+                hola mundo
+            </div>
+        </div>
+
+    </body>
+</html>

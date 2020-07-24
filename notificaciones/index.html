@@ -1,0 +1,157 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Animaciones de entrada y salida</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
+   <style>
+    body {
+        background: url('platzi.png');
+        background-size: 100%;
+        height: 200vh;
+        margin: 0;
+
+    }
+    .header{
+        background: #1d3644;
+        display: flex;
+        height: 52px;
+        justify-content: flex-end;
+        padding-right: 200px;
+    }
+   
+     
+    .notification{
+        color: white;
+        width: 50px;
+        /* hereda el alto de header */
+        height: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      
+
+
+    }
+    .notification:before {
+      content: "\f0f3";
+      font-family: "FontAwesome";
+      display: block;
+      transform-origin: center top;
+    }
+    .notification.notify:before{
+      animation-name: bell;
+      animation-duration: 1s;
+      transform-origin: center top;
+      animation-timing-function: ease-out;
+
+    }
+    .notification:after{
+
+        content: attr(data-count);
+        font-size: 11px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 14px;
+        height: 14px;
+        background: #ff4600;
+        border-radius: 50%;
+        position: absolute;
+        top: 5;
+        right: 5;
+        opacity: 0;
+        transition: .3s;
+        transform: scale(.5);
+        will-change: opacity, transform;
+    }
+    .notification.show-count:after{
+        opacity: 1;
+        transform: scale(1);
+    }
+    .btn {
+      text-align: center;
+      padding: .6em .8em .8em;
+      border: none;
+      color: white;
+      background: lightgray;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: inset 0 -.2em rgba(0,0,0, .2);
+      outline: 0;
+      transition: .2s;
+      will-change: transform;
+    }
+    .btn.primary {
+      background: #7dc800;
+    }
+    .btn:active {
+      transform: scale(.9);
+    }
+
+    @keyframes bell {
+        0%{
+            transform: rotate(35deg);
+
+        }
+        12.5%{
+            transform: rotate(-30deg);
+        }
+        25%{
+            transform: rotate(25deg);
+        }
+        37.5%{
+            transform: rotate(-20deg);
+        }
+        50%{
+            transform: rotate(15deg);
+
+        }
+        62.5%{
+            transform: rotate(-10deg);
+
+        }
+        75%{
+            transform: rotate(5deg);
+
+        }
+        100%{
+            transform: scale(0deg);
+
+        }
+        
+    }
+   
+  </style>
+</head>
+<body>
+<header class="header">
+    <button class="btn primary" id="button">Enviar notificación</button>
+
+    <div class="notification" id="notificación" ></div>
+</header>
+
+
+</body>
+<script>
+ const button = document.getElementById('button')
+ const notificación = document.getElementById('notificación')
+ button.addEventListener('click', (event)=>{
+     console.log(event);
+     // si no se puede ponga cero
+     let  count = Number(notificación.getAttribute('data-count')) || 0;
+     notificación.setAttribute('data-count', count+1 );
+     notificación.classList.add('show-count');
+     notificación.classList.add('notify');
+     
+
+ });
+ notificación.addEventListener('animationend', ()=>{
+     notificación.classList.remove('notify')
+ })
+
+</script>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Transfomacion punto origen</title>
+        <style>
+            body{
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                height: 100vh;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .container{
+                border: 1px solid red;
+                width: 100%;
+            }
+            .container:hover .cuadrado{
+                animation-play-state: paused;
+       
+
+
+            }
+            .cuadrado{
+                width: 200px;
+                height: 200px;
+                background-color: #7dc900;
+                margin: 20px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* transition: .3s; */
+
+                /* multiples animaciones */
+                animation-name: cuadrado, rebote;
+
+                /* toda la configuracion se custom con una , */
+                animation-duration: 3s, .3s ;
+                /* animation-delay: 1s; */
+              
+                /* animation-direction: normal; */
+                /* animation-direction: reverse; */
+                animation-direction: alternate;
+
+                /* animation-fill-mode: forwards; se queda con el ultimo  = opacity: 0;*/
+                
+                /* define el estado de la animacion */
+                position: relative;
+
+
+                /* cambiar aceleracion */
+               
+                animation-iteration-count: infinite, 20;
+                
+
+                /* animation-timing-function: ease por defecto; */
+                /* animation-timing-function: ease ease-in ease-in-out ease-out linear; */
+                /* animation-timing-function: ease-in acelaricon mas suabe al inicio; */
+                /* animation-timing-function: ease-in;
+                animation-timing-function: ease-out;
+                animation-timing-function: ease-in-out; */
+                /* animation-timing-function: linear no tanga aceleracion; */
+                /* animation-timing-function: linear; */
+                /* podemos poner pasos  steps(numero de pasos en frames)*/
+                /* animation-timing-function: steps(300); */
+
+                /* aceleracion pueda ser fluida a nuestro gusto cubic-bezier() 0-1 */
+                /* animation-timing-function: cubic-bezier(1,1,1,1) = linear; */
+                /* animation-timing-function: cubic-bezier(1,1,1,1); */
+                /* www.cubic-bezier.com */
+                /* animation-timing-function: cubic-bezier(.75,-0.31,.33,1.4); */
+                animation-timing-function: linear;
+
+                
+
+
+                
+                
+
+            }
+          
+            @keyframes cuadrado {
+                0%{
+                    left: 0;
+                    /* opacity: 1; */
+
+                }
+                100%{
+                    /* opacity: 0; */
+                    left: calc(100% - 240px);
+
+                }
+
+                
+            }
+
+            @keyframes rebote {
+                /* 0% */
+                from{
+                    transform: translateY(0);
+
+                }
+                /* 100% */
+                to{
+                    transform: translateY(100px) scale(1, .8);
+
+                }
+                
+            }
+            @keyframes escalera {
+                from{
+
+                    transform: translateY(0);
+                }to{
+                    transform: translateY(500px);
+                }                
+            }
+           
+        
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="cuadrado" id="cuadrado">
+                hola mundo
+            </div>
+        </div>
+
+    </body>
+
+    <!-- detectar fin e inicio animaciones -->
+    <script>
+
+        const cuadrado = document.getElementById('cuadrado')
+
+        // $cuadrado.addEventListener('nombre del evento', funcion( que debo hacer))
+        cuadrado.addEventListener('animationend', (event)=>{
+            // cuadrado.addEventListener('animationstart', (event)=>{
+            //     cuadrado.addEventListener('animationiteration', (event)=>{
+            console.log(event)
+            if(event.animationName === 'rebote'){
+                cuadrado.style.animationName ='cuadrado escalera';
+                cuadrado.style.animationDuration = '3s'
+                
+
+            }
+        })
+
+
+
+    </script>
+</html>
